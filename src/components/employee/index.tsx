@@ -1,8 +1,8 @@
 import React, { Component } from "react";
-
 import { Table } from "antd";
 
 import QueryForm from "./QueryForm";
+import { EmployeeResponse } from "../../interface/employee";
 
 import "./index.css";
 
@@ -29,12 +29,34 @@ const employeeColumns = [
   },
 ];
 
-class Employee extends Component {
+interface State {
+  employee: EmployeeResponse;
+}
+
+class Employee extends Component<{}, State> {
+  state: State = { employee: undefined };
+  getTotal = () => {
+    let total: number;
+    if (typeof this.state.employee !== "undefined") {
+      total = this.state.employee.length;
+    } else {
+      total = 0;
+    }
+    return <p className="tip">共有 {total} 名员工</p>;
+  };
+  setEmployee = (employee: EmployeeResponse) => {
+    this.setState({ employee });
+  };
   render() {
     return (
       <>
-        <QueryForm />
-        <Table columns={employeeColumns} className="table" />
+        <QueryForm onDataChange={this.setEmployee} />
+        {this.getTotal()}
+        <Table
+          columns={employeeColumns}
+          dataSource={this.state.employee}
+          className="table"
+        />
       </>
     );
   }

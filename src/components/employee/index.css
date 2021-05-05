@@ -4,3 +4,7 @@
 .toolbar {
   margin: 20px 0;
 }
+.tip {
+  padding-top: 20px;
+  color: #666;
+}
