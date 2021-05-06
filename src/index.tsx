@@ -1,8 +1,12 @@
 import React from "react";
 import ReactDOM from "react-dom";
-// import HelloClass from "./components/demo/HelloClass";
-// import HelloHOC from "./components/demo/HelloHOC";
-// import HelloHooks from "./components/demo/HelloHooks";
+import { Provider } from "react-redux";
 import Root from "./routers";
+import store from "./redux/store";
 
-ReactDOM.render(<Root />, document.querySelectorAll(".app")[0]);
+ReactDOM.render(
+  <Provider store={store}>
+    <Root />
+  </Provider>,
+  document.querySelectorAll(".app")[0]
+);
