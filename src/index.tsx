@@ -3,6 +3,6 @@ import ReactDOM from "react-dom";
 // import HelloClass from "./components/demo/HelloClass";
 // import HelloHOC from "./components/demo/HelloHOC";
 // import HelloHooks from "./components/demo/HelloHooks";
-import App from "./components/App";
+import Root from "./routers";
 
-ReactDOM.render(<App />, document.querySelectorAll(".app")[0]);
+ReactDOM.render(<Root />, document.querySelectorAll(".app")[0]);
