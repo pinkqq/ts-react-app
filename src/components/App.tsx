@@ -1,11 +1,10 @@
 import React from "react";
-import { Menu, ConfigProvider, Layout } from "antd";
 import { Route, Link } from "react-router-dom";
-import zhCN from "antd/lib/locale/zh_CN";
+import { Layout, Menu, ConfigProvider } from "antd";
+import zh_CN from "antd/lib/locale-provider/zh_CN";
 
 import Employee from "./employee";
 import Setting from "./setting";
-
 import "./App.css";
 
 const { Header, Content, Footer } = Layout;
@@ -13,14 +12,14 @@ const { Header, Content, Footer } = Layout;
 const App = ({ match }: any) => {
   let defaultKey = match.url.replace("/", "") || "employee";
   return (
-    <ConfigProvider locale={zhCN}>
+    <ConfigProvider locale={zh_CN}>
       <Layout>
         <Header>
           <Menu
-            mode="horizontal"
             theme="dark"
+            mode="horizontal"
+            defaultSelectedKeys={[defaultKey]}
             className="menu"
-            defaultSelectedKeys={["employee"]}
           >
             <Menu.Item key="employee">
               <Link to="/employee">员工管理</Link>
@@ -37,12 +36,7 @@ const App = ({ match }: any) => {
             <Route path="/setting" component={Setting} />
           </div>
         </Content>
-        <Footer className="footer">
-          项目地址：{" "}
-          <a href="https://github.com/pinkqq/ts-react-app">
-            https://github.com/pinkqq/ts-react-app
-          </a>
-        </Footer>
+        <Footer className="footer">TypeScript in Action</Footer>
       </Layout>
     </ConfigProvider>
   );
